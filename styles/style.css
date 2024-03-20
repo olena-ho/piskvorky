@@ -46,20 +46,20 @@
   padding: 16px;
 }
 
-.btn__rules {
+.btn--rules {
   background-color: #1fcca4;
 }
 
-.btn__rules:hover {
+.btn--rules:hover {
   background-color: #1cbb96;
   border-bottom: 1px solid #283e50;
 }
 
-.btn__start-game {
+.btn--start-game {
   background-color: #0197f6;
 }
 
-.btn__start-game:hover {
+.btn--start-game:hover {
   background-color: #0090e9;
   border-bottom: 1px solid #283e50;
 }
