@@ -48,11 +48,11 @@
 
 .btn--rules {
   background-color: #1fcca4;
+  border-bottom: 1px solid #283e50;
 }
 
 .btn--rules:hover {
   background-color: #1cbb96;
-  border-bottom: 1px solid #283e50;
 }
 
 .btn--start-game {
@@ -61,5 +61,4 @@
 
 .btn--start-game:hover {
   background-color: #0090e9;
-  border-bottom: 1px solid #283e50;
 }
