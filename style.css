@@ -9,7 +9,6 @@
   background-attachment: fixed;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
-  height: 100hv;
 }
 
 .container {
@@ -19,6 +18,13 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.container__game {
+  max-width: 80vmin;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-image {
@@ -36,6 +42,10 @@
   font-size: 45px;
   font-weight: 400;
   margin: 30px auto;
+}
+
+.description__title--game {
+  color: #fff;
 }
 
 .description__text {
@@ -66,3 +76,50 @@
 .btn--start-game:hover {
   background-color: #0090e9;
 }
+
+/* #region icons */
+.icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons__block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icons__playing {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.icon {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.icon img {
+  display: block;
+}
+
+.icon--home {
+  background-color: #1fcca4;
+}
+
+.icon--home:hover {
+  background-color: #1cbb96;
+}
+
+.icon--restart {
+  background-color: #0197f6;
+}
+
+.icon--restart:hover {
+  background-color: #0090e9;
+}
+
+
+/* #endregion */
