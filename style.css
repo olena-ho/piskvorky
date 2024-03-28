@@ -11,6 +11,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* #region both containers */
 .container {
   width: 450px;
   max-width: 80%;
@@ -28,12 +29,15 @@
   flex-direction: column;
 }
 
+/* #endregion */
+
 .main-image {
   display: block;
   width: 100%;
   border-radius: 8px 8px 0 0;
 }
 
+/* #region description + title */
 .description {
   background-color: #283e50;
 }
@@ -56,7 +60,9 @@
   padding: 0 20px 20px;
   line-height: 1.5;
 }
+/* #endregion */
 
+/* #region start page btn */
 .btn {
   display: block;
   text-decoration: none;
@@ -80,6 +86,7 @@
 .btn--start-game:hover {
   background-color: #0090e9;
 }
+/* #endregion */
 
 /* #region icons */
 .icons {
@@ -131,8 +138,6 @@
 .icon--restart:hover {
   background-color: #0090e9;
 }
-
-
 /* #endregion */
 
 /* #region cells */
@@ -140,15 +145,22 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 14px;
-  background-image: linear-gradient(#b3aad2, #f9d9e6);
+  box-shadow: 2px -2px 8px #7a77adcf;
 }
 
 .cell {
   width: 10%;
   aspect-ratio: 1/1;
-  border: 1px solid rgb(51, 51, 51);
-  background-color: transparent;
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
 }
 
-/* endregion */
+.cell:focus,
+.cell:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+/* #endregion */
