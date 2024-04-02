@@ -145,6 +145,7 @@
   flex-wrap: wrap;
   margin-top: 14px;
   box-shadow: 2px -2px 8px #7a77adcf; /*vypadalo to, že kolem bloku buněk na obrázku je malý shadow, nejsem si jistá, že je to součástí požadavku, ale vypadá to hezky, tak jsem se rozhodla přidat ten shadow:)*/
+  border: 1px solid black;
 }
 
 .cell {
