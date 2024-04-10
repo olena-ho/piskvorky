@@ -104,7 +104,7 @@
   justify-content: flex-end;
 }
 
-.icons__playing {
+.icons__text {
   text-transform: uppercase;
   font-size: 24px;
   font-weight: bold;
@@ -142,7 +142,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 14px;
-  box-shadow: 2px -2px 8px #7a77adcf; /*vypadalo to, že kolem bloku buněk na obrázku je malý shadow, nejsem si jistá, že je to součástí požadavku, ale vypadá to hezky, tak jsem se rozhodla přidat ten shadow:)*/
+  box-shadow: 2px -2px 8px #7a77adcf;
   border: 1px solid black;
 }
 
@@ -157,5 +157,55 @@
 .cell:focus,
 .cell:hover {
   background-color: rgba(255, 255, 255, 0.5);
+}
+/* #endregion */
+
+/* #region cell game icons */
+
+.cell__icon--circle {
+  position: relative;
+}
+
+.cell__icon--circle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(./img/circle.svg);
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: invert(100%);
+  animation: enlarge 0.15s linear;
+}
+.cell__icon--cross {
+  position: relative;
+}
+
+.cell__icon--cross::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(./img/cross.svg);
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: invert(100%);
+  animation: enlarge 0.15s linear;
+}
+
+/* animation management */
+@keyframes enlarge {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
 /* #endregion */
