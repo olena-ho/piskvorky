@@ -51,7 +51,8 @@ const handleClick = (event) => {
       alert('Hra skončila nerozhodně.');
     }
   };
-  returnWinner();
+  //making sure the class on the winning cell has time to be applied
+  setTimeout(returnWinner, 200);
 };
 
 // event listener added
