@@ -31,22 +31,24 @@ const handleClick = (event) => {
 
   const gameField = Array.from(cells).map(item => {
     if (item.classList.contains("cell__icon--circle")) {
-      return "o";
+      return 'o';
     } else if (item.classList.contains("cell__icon--cross")) {
-      return "x";
+      return 'x';
     } else {
-      return "_";
+      return '_';
     }
   });
 
   const returnWinner = () => {
     const winner = findWinner(gameField);
-    if (winner === "o") {
+    if (winner === 'o') {
       alert('Vyhrálo kolečko!');
       location.reload();
-    } else if (winner === "x") {
+    } else if (winner === 'x') {
       alert('Vyhrál křížek!');
       location.reload();
+    } else if (winner === 'tie') {
+      alert('Hra skončila nerozhodně.');
     }
   };
   returnWinner();
