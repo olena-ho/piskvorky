@@ -1,5 +1,7 @@
-const player = document.getElementById('icon__player');
+import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4'
 
+const cells = document.querySelectorAll('.cell');
+const player = document.getElementById('icon__player');
 let currentPlayer = 'circle';
 
 const addCross = (event) => {
@@ -24,49 +26,37 @@ const handleClick = (event) => {
     player.src = './img/circle.svg';
     player.alt = 'kolečko';
   }
+
+  // creating the array with 'x', 'o' or '_' for the cells
+
+  const gameField = Array.from(cells).map(item => {
+    if (item.classList.contains("cell__icon--circle")) {
+      return "o";
+    } else if (item.classList.contains("cell__icon--cross")) {
+      return "x";
+    } else {
+      return "_";
+    }
+  });
+
+  const returnWinner = () => {
+    const winner = findWinner(gameField);
+    if (winner === "o") {
+      alert('Vyhrálo kolečko!');
+      location.reload();
+    } else if (winner === "x") {
+      alert('Vyhrál křížek!');
+      location.reload();
+    }
+  };
+  returnWinner();
 };
 
-// assigning eventListener to buttons in the 1st row
+// event listener added
 
-document
-  .querySelector('button:nth-child(1)')
-  .addEventListener('click', handleClick);
-
-document
-  .querySelector('button:nth-child(2)')
-  .addEventListener('click', handleClick);
-
-document
-  .querySelector('button:nth-child(3)')
-  .addEventListener('click', handleClick);
-
-document
-  .querySelector('button:nth-child(4)')
-  .addEventListener('click', handleClick);
-
-document
-  .querySelector('button:nth-child(5)')
-  .addEventListener('click', handleClick);
-
-document
-  .querySelector('button:nth-child(6)')
-  .addEventListener('click', handleClick);
-
-document
-  .querySelector('button:nth-child(7)')
-  .addEventListener('click', handleClick);
-
-document
-  .querySelector('button:nth-child(8)')
-  .addEventListener('click', handleClick);
-
-document
-  .querySelector('button:nth-child(9)')
-  .addEventListener('click', handleClick);
-
-document
-  .querySelector('button:nth-child(10)')
-  .addEventListener('click', handleClick);
+cells.forEach((cell) => {
+  cell.addEventListener('click', handleClick);
+});
 
 // preventing restart by accident
 
@@ -78,13 +68,3 @@ restartIcon.addEventListener('click', (event) => {
     event.preventDefault();
   }
 });
-
-
-//! don't review below this line - it's part of the solution for homework #4
-/*
-const cells = document.querySelectorAll('.cell');
-
-cells.forEach((cell) => {
-  cell.addEventListener('click', handleClick);
-});
-*/
