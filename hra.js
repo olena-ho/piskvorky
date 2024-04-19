@@ -38,6 +38,7 @@ const handleClick = (event) => {
       return '_';
     }
   });
+//applying the findWinner function
 
   const returnWinner = () => {
     const winner = findWinner(gameField);
