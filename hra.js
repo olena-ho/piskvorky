@@ -1,6 +1,7 @@
 import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4'
 
 const cells = document.querySelectorAll('.cell');
+
 const player = document.getElementById('icon__player');
 let currentPlayer = 'circle';
 
@@ -14,7 +15,7 @@ const addCircle = (event) => {
   event.target.disabled = true;
 };
 
-const handleClick = (event) => {
+const handleClick = async (event) => {
   if (currentPlayer === 'circle') {
     addCircle(event);
     currentPlayer = 'cross';
@@ -38,22 +39,63 @@ const handleClick = (event) => {
       return '_';
     }
   });
-//applying the findWinner function
 
-  const returnWinner = () => {
-    const winner = findWinner(gameField);
-    if (winner === 'o') {
-      alert('Vyhrálo kolečko!');
-      location.reload();
-    } else if (winner === 'x') {
-      alert('Vyhrál křížek!');
-      location.reload();
-    } else if (winner === 'tie') {
-      alert('Hra skončila nerozhodně.');
-    }
+//applying the findWinner function
+const winner = findWinner(gameField);
+
+const announceWinner = () => {
+  alert('Vyhrál hrač se symbolem ${winner}!');
+  location.reload();
   };
-  //making sure the class on the winning cell has time to be applied
-  setTimeout(returnWinner, 200);
+    
+if (winner === 'o' || winner === 'x') {
+  setTimeout(announceWinner, 200);
+  } else if (winner === 'tie') {
+    setTimeout(() => {
+      alert('Hra skončila nerozhodně.');
+      location.reload();
+    }, 200);
+  } else {
+    if (currentPlayer === "cross") {
+      // bonus 5 - blocking cells before AI making its move
+      cells.forEach((cell) => {
+        cell.disabled = true;
+      });
+      // calling API
+      const response = await fetch(
+        "https://piskvorky.czechitas-podklady.cz/api/suggest-next-move",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            board: gameField,
+            player: "x",
+          }),
+        }
+      );
+
+      const data = await response.json();
+      const { x, y } = data.position;
+      const index = cells[x + y * 10];
+
+      // bonus 5 - unlocking unplayed cells for players after the AI made its move
+      cells.forEach((cell) => {
+        if (
+          cell.classList.contains("cell__icon--circle") ||
+          cell.classList.contains("cell__icon--cross")
+        ) {
+          cell.disabled = true;
+        } else {
+          cell.disabled = false;
+        }
+      });
+
+      // AI making its move
+      index.click();
+    }
+  }
 };
 
 // event listener added
