@@ -42,9 +42,10 @@ const handleClick = async (event) => {
 
 //applying the findWinner function
 const winner = findWinner(gameField);
+console.log(winner);
 
 const announceWinner = () => {
-  alert('Vyhrál hrač se symbolem ${winner}!');
+  alert(`Vyhrál hrač se symbolem ${winner}!`);
   location.reload();
   };
     
